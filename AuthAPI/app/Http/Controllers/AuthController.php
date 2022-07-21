@@ -20,7 +20,7 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct() // se añade el metodo register
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
@@ -32,7 +32,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
+    public function login(Request $request) //Preguntamos los datos de email y contraseña para ingresar al sistema
     {
         $credentials = $request->only('email', 'password');
 
@@ -40,7 +40,7 @@ class AuthController extends Controller
             return $this->respondWithToken($token);
         }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        return response()->json(['error' => 'No autorizado'], 401);
     }
 
     /**
@@ -48,7 +48,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me()
+    public function me() //Me devuelve los datos de la persona que esta logeada, requiere de logearse y uso del token
     {
         return response()->json($this->guard()->user());
     }
@@ -58,7 +58,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout() //Se sale del sistema 
     {
         $this->guard()->logout();
 
@@ -70,9 +70,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh()
+    public function refresh() //refresca el tpken que se tiene bajo la sesion 
     {
-        return $this->respondWithToken($this->guard()->refresh());
+        return $this->respondWithToken($this->guard()->refresh()); //Llama a funcion que devuelve un token
     }
 
     /**
@@ -82,7 +82,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token) //Devuelve un token de tipo bearer
     {
         return response()->json([
             'access_token' => $token,
@@ -103,7 +103,7 @@ class AuthController extends Controller
     
     public function register(Request $request)
     {
-
+        //Validaciónes de los campos con su registros de los nuevos usuarios responde con un token
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -124,13 +124,5 @@ class AuthController extends Controller
 
         return response()->json(compact('user','token'),201);
         RegMail();
-    }
-
-    public function RegMail(){
-
-        $correo = new RegistroMaileable;
-        Mail::to('jballesterosd@unal.edu.co')->send($correo);
-        return "mensaje enviado";
-
     }
 }

@@ -15,7 +15,7 @@ class ChangePasswordController extends Controller
         return $this->updatePasswordRow($request)->count() > 0 ? $this->resetPassword($request) : $this->tokenNotFoundError();
       }
   
-      // Verify if token is valid
+      // Verifica si el token es valido 
       private function updatePasswordRow($request){
          return DB::table('password_resets')->where([
              'email' => $request->email,
@@ -23,27 +23,27 @@ class ChangePasswordController extends Controller
          ]);
       }
   
-      // Token not found response  
+      // Si el Token no funciona da una respuesta  
       private function tokenNotFoundError() {
           return response()->json([
-            'error' => 'Either your email or token is wrong.'
+            'error' => 'Correo electronico o token equivocado.'
           ],Response::HTTP_UNPROCESSABLE_ENTITY);
       }
   
       // Reset password
       private function resetPassword($request) {
-          // find email
+          // Encuentra email
           $userData = User::whereEmail($request->email)->first();
-          // update password
+          // Edita la password
           $userData->update([
             'password'=>bcrypt($request->password)
           ]);
-          // remove verification data from db
+          // remueve la verificacion de la informacion de la db
           $this->updatePasswordRow($request)->delete();
   
-          // reset password response
+          // Cambia la password y da respuesta
           return response()->json([
-            'data'=>'Password has been updated.'
+            'data'=>'La contraseña se ha cambiado.'
           ],Response::HTTP_CREATED);
       }    
 }

@@ -21,7 +21,7 @@ class UpdatePasswordRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() //Validaciones para cambiar la contraseña
     {
         return [
             'email' => 'required|email',

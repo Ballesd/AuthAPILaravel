@@ -1,10 +1,10 @@
 @component('mail::message')
-# Introduction
+# Introduccion al cambio de contraseña
 
-The body of your message.
+Mensaje para reestablecer su constraseña
 
 @component('mail::button', ['url' => 'http://localhost:4200/response-password-reset?token='.$token])
-Button Text
+Reestablecer
 @endcomponent
 
 Thanks,<br>
