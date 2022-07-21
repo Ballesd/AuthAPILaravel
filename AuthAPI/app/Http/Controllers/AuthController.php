@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
 Use App\Models\User;
 use JWTAuth;
+use App\Mail\RegistroMaileable;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -121,5 +123,14 @@ class AuthController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user','token'),201);
+        RegMail();
+    }
+
+    public function RegMail(){
+
+        $correo = new RegistroMaileable;
+        Mail::to('jballesterosd@unal.edu.co')->send($correo);
+        return "mensaje enviado";
+
     }
 }
