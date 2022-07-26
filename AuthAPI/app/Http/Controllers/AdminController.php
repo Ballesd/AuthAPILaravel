@@ -35,6 +35,8 @@ class AdminController extends Controller
             return response()->json($validator->errors()->toJson(),400);
         }
 
+        //return view('Email.ingreso',compact('request'));
+
         //$this->send($request->all());  //Envia el correo (llama a la funcion enviar)
         $this->sendi();
     }

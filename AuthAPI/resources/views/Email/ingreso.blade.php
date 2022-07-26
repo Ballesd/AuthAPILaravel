@@ -7,6 +7,43 @@
     <title>Document</title>
 </head>
 <body>
+
     <h3>Llegada de un nuevo usuario</h3>
+        <!--
+    <section>
+        <div>
+            <p>Nombre: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Dirección: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Correo: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Logo: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Phone: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>RRD: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Fundation: </p> 
+            {{  }}
+        </div>
+        <div>
+            <p>Name_terrain: </p> 
+            {{  }}
+        </div>
+    </section>
+-->
 </body>
 </html>
