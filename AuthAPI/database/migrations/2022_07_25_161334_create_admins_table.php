@@ -17,7 +17,7 @@ class CreateAdminsTable extends Migration
             $table->id();
             
             $table->string('type',20)->nulleable();
-            $table->string('permissions')->nullable();
+            $table->string('permissions',20)->nullable();
 
             $table->foreignId('user_id')
             ->nullable()

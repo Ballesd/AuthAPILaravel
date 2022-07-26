@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('nuevoingreso','App\Http\Controllers\AdminController@datosVerify');
+
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
 Route::group([
     'middleware' => 'api',
@@ -30,5 +35,5 @@ Route::group([
     Route::post('me', 'App\Http\Controllers\AuthController@me');
     Route::post('register', 'App\Http\Controllers\AuthController@register');
     Route::post('sendPasswordResetLink', 'App\Http\Controllers\PasswordResetRequestController@sendEmail');
-    Route::post('resetPassword', 'App\Http\Controllers\ChangePasswordController@passwordResetProcess');    
+    Route::post('resetPassword', 'App\Http\Controllers\ChangePasswordController@passwordResetProcess');
 });

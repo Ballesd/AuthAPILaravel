@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 
 class PasswordResetRequestController extends Controller
 {
-    public function sendEmail(Request $request)  //Duncion importante, manda el email de cambio de contraseña 
+    public function sendEmail(Request $request)  //Funcion importante, manda el email de cambio de contraseña 
     {
         if (!$this->validateEmail($request->email)) {   //  Valida el correo si existe 
             return $this->failedResponse();

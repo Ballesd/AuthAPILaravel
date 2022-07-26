@@ -13,6 +13,7 @@ use JWTAuth;
 use App\Mail\RegistroMaileable;
 use Illuminate\Support\Facades\Mail;
 
+
 class AuthController extends Controller
 {
     /**
@@ -111,7 +112,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-                return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors()->toJson(),400);
         }
 
         $user = User::create([
@@ -123,6 +124,5 @@ class AuthController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user','token'),201);
-        RegMail();
     }
 }
