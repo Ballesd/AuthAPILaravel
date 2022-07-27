@@ -3,7 +3,7 @@
 
 Mensaje para reestablecer su constraseña
 
-@component('mail::button', ['url' => 'http://localhost:4200/response-password-reset?token='.$token])
+@component('mail::button', ['url' => 'http://localhost:8080/Reset?resetToken='.$token])
 Reestablecer
 @endcomponent
 
