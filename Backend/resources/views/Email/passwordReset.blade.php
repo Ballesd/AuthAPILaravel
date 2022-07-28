@@ -7,6 +7,6 @@ Mensaje para reestablecer su constraseña
 Reestablecer
 @endcomponent
 
-Thanks,<br>
+Garcias,<br>
 {{ config('app.name') }}
 @endcomponent
